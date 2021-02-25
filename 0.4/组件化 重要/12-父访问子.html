@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="aaa"></cpn>
+
+    <div @click="btnClick">514516</div>
+  </div>
+
+  <template id="cpn">
+    <div>
+      {{cpnMessage}}
+    </div>
+  </template>
+  <script src="vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: "你好啊"
+      },
+      methods: {
+        btnClick() {
+          //1. $children
+          //这里要写 下标 且修改的时候 还要更改下标 十分麻烦
+          //这个方法不好
+          // console.log(this.$children[0].cpnMessage);
+          //2.$refs
+          console.log(this.$refs.aaa)
+
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              cpnMessage: '我是子组件'
+            }
+          },
+          methods: {
+            showMessage() {
+              console.log('showMessage')
+            }
+          },
+
+
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <!-- 总结 1. v-for 第一个是 值 value 第二个是 索引位置 index （index，value）
+      2. : v-bind @ v-on
+      3. 涉及判断 可以用 cuerys == index 来判断是否是对的 -->
+      <li v-for='(movie,index) in movies' 
+      :class ='{red:cuerys == index}' @click = 'btnButton(index)'>
+        {{index}} -- {{movie}}
+      </li>
+    </ul>
+  </div>
+
+  <script src="../vue.js/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:'#app',
+      data:{
+        movies:[
+          '海王','吊毛','杀貂','etc'
+        ],
+        cuerys:0
+      },
+      methods: {
+        btnButton:function(index){
+          return this.cuerys = index
+        }
+      },
+    })
+  </script>
+</body>
+</html>

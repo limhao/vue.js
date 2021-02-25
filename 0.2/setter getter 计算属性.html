@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{fullname}}</h2>
+  </div>
+  <script src="../0.2/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        firstname: 'kobe',
+        lasrname: 'Bryant'
+      },
+      //计算属性一般没有set方法，只读属性
+      computed: {
+        //完整写法
+        fullname: {
+          set:function(){
+            
+          },
+          get: function () {
+            return this.firstname + ' ' + this.lasrname
+          }
+        },
+        //简单写法
+        fullname: function () {
+          return this.firstname + ' ' + this.lasrname
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>

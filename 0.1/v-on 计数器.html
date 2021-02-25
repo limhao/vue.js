@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="counter">{{num}}</div>
+    <!-- v-on也可以 -->
+    <button @click="decrease">减少</button>
+    <button @click="increase">增加</button>
+  </div>
+
+  <script src="vue.js"></script>
+
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        num: 1,
+      },
+      methods: {
+        increase() {
+          this.num++
+        },
+        decrease() {
+          this.num--
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

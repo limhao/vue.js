@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    去掉响应式 可以使用 app.data = 'xiehao' <br>
+    会不修改 v-once
+    <h2 v-once>{{message}}</h2>
+    原封不动地展示 v-pre
+    <h2 v-pre>{{message}}</h2>
+
+  </div>
+
+  <script src="vue.js"></script>
+  <script>
+    let app = new Vue({
+      el:'#app',
+      data: {
+        message : 'jack'
+      },
+    }) 
+  </script>
+
+</body>
+</html>

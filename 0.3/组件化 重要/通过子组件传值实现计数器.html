@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 这里错误原因是 没有写子组件的 发射函数 -->
+  <!-- <div id="app" >
+    <h2>{{total}}</h2>
+    <cpn></cpn>
+  </div> -->
+
+  <div id="app" >
+    <h2>{{total}}</h2>
+    <cpn @increment = "changeTotal" @decrement = "changeTotal"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <button @click = "increment">+1</button>
+      <button @click = "decrement">-1</button>
+    </div>
+  </template>
+  <script src="../vue.js">
+  </script>
+  <script>
+    const cpn = {
+      el: '#cpn',
+      //  props:{
+
+      //  },
+      data() {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        increment() {
+          this.counter++
+          this.$emit('increment', this.counter)
+        },
+        decrement() {
+          this.counter--
+          this.$emit('decrement', this.counter)
+        }
+      },
+
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        total: 0
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        changeTotal(counter) {
+          this.total = counter
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

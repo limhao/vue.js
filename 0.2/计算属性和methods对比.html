@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 1 方法一 过于繁琐 -->
+    <h2>{{firstname}} {{lastname}}</h2>
+    <!-- 方法二 methods -->
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <h2>{{getFullName()}}</h2>
+    <!-- 方法三 methods -->
+    <!-- 方法三 省缓存 计算结果只缓存一次-->
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName}}</h2>
+
+  </div>
+  <script src="../0.2/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        firstname: 'kobe',
+        lasrname: 'Bryant'
+      },
+      methods: {
+        getFullName:function(){
+          console.log('1')
+          return this.firstname + ' ' +this.lasrname                                       
+        }
+      },
+      computed:{
+        fullName:function(){
+          console.log('2')
+          return this.firstname + ' ' +this.lasrname
+        }
+      }
+    })
+  </script>  
+</body>
+</html>
